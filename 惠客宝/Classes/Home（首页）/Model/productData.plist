@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>高利宝</string>
+		<key>productImageString</key>
+		<string>高利宝</string>
+		<key>scale</key>
+		<string>5.7%</string>
+		<key>scaleName</key>
+		<string>近7日年化</string>
+		<key>timeLimit</key>
+		<string>随存随取</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>优利宝</string>
+		<key>productImageString</key>
+		<string>优利宝</string>
+		<key>scale</key>
+		<string>6.7%</string>
+		<key>scaleName</key>
+		<string>年化收益</string>
+		<key>timeLimit</key>
+		<string>至少2个月</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,55 @@
+//
+//  SPLockOverlay.m
+//  SuQian
+//
+//  Created by Suraj on 25/9/12.
+//  Copyright (c) 2012 Suraj. All rights reserved.
+//
+
+#import "SPLockOverlay.h"
+
+#define kLineColor			[UIColor colorWithRed:44/255.0 green:187/255.0 blue:251/255.0 alpha:1]
+#define kLineGridColor  [UIColor whiteColor] //[UIColor colorWithRed:79/255.0 green:193/255.0 blue:251/255.0 alpha:1]
+
+@implementation SPLockOverlay
+
+@synthesize pointsToDraw;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+			self.backgroundColor = [UIColor clearColor];
+			self.pointsToDraw = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	CGFloat lineWidth = 3.0;
+	
+	CGContextSetLineWidth(context, lineWidth);
+	CGContextSetStrokeColorWithColor(context, kLineColor.CGColor);
+    for(SPLine *line in self.pointsToDraw)
+		{			
+			CGContextMoveToPoint(context, line.fromPoint.x, line.fromPoint.y);
+			CGContextAddLineToPoint(context, line.toPoint.x, line.toPoint.y);
+			CGContextStrokePath(context);
+			
+			CGFloat nodeRadius = 14.0;
+			
+			CGRect fromBubbleFrame = CGRectMake(line.fromPoint.x- nodeRadius/2, line.fromPoint.y - nodeRadius/2, nodeRadius, nodeRadius);
+			CGContextSetFillColorWithColor(context, kLineGridColor.CGColor);
+			CGContextFillEllipseInRect(context, fromBubbleFrame);
+			
+			if(line.isFullLength){
+			CGRect toBubbleFrame = CGRectMake(line.toPoint.x - nodeRadius/2, line.toPoint.y - nodeRadius/2, nodeRadius, nodeRadius);
+			CGContextFillEllipseInRect(context, toBubbleFrame);
+			}
+		}
+}
+@end

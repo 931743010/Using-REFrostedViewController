@@ -1,0 +1,171 @@
+10
+
+dir
+43
+svn://xyl@192.168.7.30:3693/source/huikebao/dev/SLPay/Resources/Images.xcassets
+svn://xyl@192.168.7.30:3693
+
+
+
+2016-01-26T07:35:31.931554Z
+39
+hjh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fc2fdc04-e7c8-4775-b88c-3208d9d39bac
+
+首页
+dir
+
+first.imageset
+dir
+
+设置
+dir
+
+LaunchImage.launchimage
+dir
+
+快付360和乐惠通的LOGO和介绍页
+dir
+
+引导页面
+dir
+
+主要页面
+dir
+
+AppIcon.appiconset
+dir
+
+商E宝功能按钮
+dir
+
+KeyBoard
+dir
+
+.DS_Store
+file
+46
+
+
+
+2016-02-04T08:46:40.000000Z
+f38d12a0741962628dc5b3b1589b9729
+2016-02-04T09:10:35.714514Z
+46
+xyl
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6148
+
+测试
+dir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
+Pos
+dir
+
+png_new便民
+dir
+
+PayInfo
+dir
+
+Bluetooth
+dir
+
+Contents.json
+file
+
+
+
+
+2016-01-26T07:59:22.000000Z
+31cc68f34934a99c0b0c1bebde56309c
+2016-01-26T07:35:31.931554Z
+39
+hjh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+62
+
+second.imageset
+dir
+
+LoginImage
+dir
+
+Page
+dir
+

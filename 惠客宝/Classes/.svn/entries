@@ -1,0 +1,80 @@
+10
+
+dir
+43
+svn://xyl@192.168.7.30:3693/source/huikebao/dev/SLPay/Classes
+svn://xyl@192.168.7.30:3693
+
+
+
+2016-01-27T10:02:16.191196Z
+43
+xyl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fc2fdc04-e7c8-4775-b88c-3208d9d39bac
+
+Gathering（收款）
+dir
+
+.DS_Store
+file
+46
+
+
+
+2016-02-04T09:13:24.000000Z
+6ad74a50d209d4cb69cae7483e45976a
+2016-02-04T09:10:35.714514Z
+46
+xyl
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8196
+
+Main（主要）
+dir
+
+Applications（应用）
+dir
+
+Home（首页）
+dir
+
+Convenient（便民）
+dir
+
+Other（其他）
+dir
+

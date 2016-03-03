@@ -1,0 +1,764 @@
+//
+//  NLConst.h
+//  MTypeSDK
+//
+//  Created by su on 13-10-23.
+//  Copyright (c) 2013年 suzw. All rights reserved.
+//
+/*!
+ @file
+ @header 
+ @abstract 通用常量表
+ @version 1.0.4
+ */
+#ifndef MTypeSDK_NLConst_h
+#define MTypeSDK_NLConst_h
+
+/*!
+ @constant 若指令集中涉及数据缓存,则该数据缓存可能的最大长度
+ */
+#define NLConst_CMD_MAXBUFFER_LEN 1024
+#define NLConst_DEFAULT_CHARSET CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)
+
+/*!
+ @enum
+ @abstract
+ @discussion
+    according to emv 4.2
+ */
+typedef enum {
+    /**
+     * Issuer Identification Number (IIN).The number that identifies the major industry and the card issuer and that forms the first part of the Primary Account Number (PAN)
+     */
+    NLEmvStandardReference_ISSUER_IDENTIFICATION_NUMBER            = 0x42   ,
+    /**
+     * Application Identifier (AID) - card.Identifies the application as described in ISO/IEC 7816-5
+     */
+    NLEmvStandardReference_AID_CARD                                = (int)0x4f   ,
+    /**
+     * Application Label.Mnemonic associated with the AID according to ISO/IEC 7816-5
+     */
+    NLEmvStandardReference_APPLICATION_LABEL                       = 0x50   ,
+    /**
+     * ISO-7816 Path.
+     */
+    NLEmvStandardReference_PATH                                    = 0x51   ,
+    /**
+     * Track 2 Equivalent Data.Contains the data elements of track 2 according to ISO/IEC 7813, excluding start sentinel, end sentinel, and Longitudinal Redundancy Check (LRC)
+     */
+    NLEmvStandardReference_TRACK_2_EQV_DATA                        = 0x57   ,
+    /**
+     * Application Primary Account Number (PAN).Valid cardholder account number
+     */
+    NLEmvStandardReference_PAN                                     = (int)0x5a,
+    /**
+     * Application Template.Contains one or more data objects relevant to an application directory entry according to ISO/IEC 7816-5
+     */
+    NLEmvStandardReference_APPLICATION_TEMPLATE                    = 0x61   ,
+    /**
+     * File Control Information (FCI) Template.Identifies the FCI template according to ISO/IEC 7816-4
+     */
+    NLEmvStandardReference_FCI_TEMPLATE                            = (int)0x6f,
+    /**
+     * Record Template (EMV Proprietary).Template proprietary to the EMV specification
+     */
+    NLEmvStandardReference_RECORD_TEMPLATE                         = 0x70   ,
+    /**
+     * Issuer Script Template 1.Contains proprietary issuer data for transmission to the ICC before the second GENERATE AC command
+     */
+    NLEmvStandardReference_ISSUER_SCRIPT_TEMPLATE_1                = 0x71   ,
+    /**
+     * Issuer Script Template 2.Contains proprietary issuer data for transmission to the ICC after the second GENERATE AC command
+     */
+    NLEmvStandardReference_ISSUER_SCRIPT_TEMPLATE_2                = 0x72   ,
+    /**
+     * Directory Discretionary Template.Issuer discretionary part of the directory according to ISO/IEC 7816-5
+     */
+    NLEmvStandardReference_DD_TEMPLATE                             = 0x73   ,
+    /**
+     * Response Message Template Format 2.Contains the data objects (with tags and lengths) returned by the ICC in response to a command
+     */
+    NLEmvStandardReference_RESPONSE_MESSAGE_TEMPLATE_2             = 0x77   ,
+    /**
+     * Response Message Template Format 1.Contains the data objects (without tags and lengths) returned by the ICC in response to a command
+     */
+    NLEmvStandardReference_RESPONSE_MESSAGE_TEMPLATE_1             = 0x80   ,
+    /**
+     * Amount, Authorised (Binary).Authorised amount of the transaction (excluding adjustments)
+     */
+    NLEmvStandardReference_AMOUNT_AUTHORISED_BINARY                = 0x81   ,
+    /**
+     * Application Interchange Profile.Indicates the capabilities of the card to support specific functions in the application
+     */
+    NLEmvStandardReference_APPLICATION_INTERCHANGE_PROFILE         = 0x82   ,
+    /**
+     * Command Template.Identifies the data field of a command message
+     */
+    NLEmvStandardReference_COMMAND_TEMPLATE                        = 0x83   ,
+    /**
+     * Dedicated File (DF) Name.Identifies the name of the DF as described in ISO/IEC 7816-4
+     */
+    NLEmvStandardReference_DEDICATED_FILE_NAME                     = 0x84   ,
+    /**
+     * Issuer Script Command.Contains a command for transmission to the ICC
+     */
+    NLEmvStandardReference_ISSUER_SCRIPT_COMMAND                   = 0x86   ,
+    /**
+     * Application Priority Indicator.Indicates the priority of a given application or group of applications in a directory
+     */
+    NLEmvStandardReference_APPLICATION_PRIORITY_INDICATOR          = 0x87   ,
+    /**
+     * Short File Identifier (SFI).Identifies the SFI to be used in the commands related to a given AEF or DDF. The SFI data object is a binary field with the three high order bits set to zero
+     */
+    NLEmvStandardReference_SFI                                     = 0x88   ,
+    /**
+     * Authorisation Code.Value generated by the authorisation authority for an approved transaction
+     */
+    NLEmvStandardReference_AUTHORISATION_CODE                      = 0x89   ,
+    /**
+     * Authorisation Response Code.Code that defines the disposition of a message
+     */
+    NLEmvStandardReference_AUTHORISATION_RESPONSE_CODE             = (int)0x8a,
+    /**
+     * Card Risk Management Data Object List 1 (CDOL1).List of data objects (tag and length) to be passed to the ICC in the first GENERATE AC command
+     */
+    NLEmvStandardReference_CDOL1                                   = (int)0x8c,
+    /**
+     * Card Risk Management Data Object List 2 (CDOL2).List of data objects (tag and length) to be passed to the ICC in the second GENERATE AC command
+     */
+    NLEmvStandardReference_CDOL2                                   = (int)0x8d,
+    /**
+     * Cardholder Verification Method (CVM) List.Identifies a method of verification of the cardholder supported by the application
+     */
+    NLEmvStandardReference_CVM_LIST                                = (int)0x8e,
+    /**
+     * Certification Authority Public Key Index - card.Identifies the certification authority’s public key in conjunction with the RID
+     */
+    NLEmvStandardReference_CA_PUBLIC_KEY_INDEX_CARD                = (int)0x8f,
+    /**
+     * Issuer Public Key Certificate.Issuer public key certified by a certification authority
+     */
+    NLEmvStandardReference_ISSUER_PUBLIC_KEY_CERT                  = 0x90   ,
+    /**
+     * Issuer Authentication Data.Data sent to the ICC for online issuer authentication
+     */
+    NLEmvStandardReference_ISSUER_AUTHENTICATION_DATA              = 0x91   ,
+    /**
+     * Issuer Public Key Remainder.Remaining digits of the Issuer Public Key Modulus
+     */
+    NLEmvStandardReference_ISSUER_PUBLIC_KEY_REMAINDER             = 0x92   ,
+    /**
+     * Signed Static Application Data.Digital signature on critical application parameters for SDA
+     */
+    NLEmvStandardReference_SIGNED_STATIC_APP_DATA                  = 0x93   ,
+    /**
+     * Application File Locator (AFL).Indicates the location (SFI, range of records) of the AEFs related to a given application
+     */
+    NLEmvStandardReference_APPLICATION_FILE_LOCATOR                = 0x94   ,
+    /**
+     * Terminal Verification Results (TVR).Status of the different functions as seen from the terminal
+     */
+    NLEmvStandardReference_TERMINAL_VERIFICATION_RESULTS           = 0x95   ,
+    /**
+     * Transaction Certificate Data Object List (TDOL).List of data objects (tag and length) to be used by the terminal in generating the TC Hash Value
+     */
+    NLEmvStandardReference_TDOL                                    = 0x97   ,
+    /**
+     * Transaction Certificate (TC) Hash Value.Result of a hash function specified in Book 2, Annex B3.1
+     */
+    NLEmvStandardReference_TC_HASH_VALUE                           = 0x98   ,
+    /**
+     * Transaction Personal Identification Number (PIN) Data.Data entered by the cardholder for the purpose of the PIN verification
+     */
+    NLEmvStandardReference_TRANSACTION_PIN_DATA                    = 0x99   ,
+    /**
+     * Transaction Date.Local date that the transaction was authorised
+     */
+    NLEmvStandardReference_TRANSACTION_DATE                        = 0x9a,
+    /**
+     * Transaction Status Information.Indicates the functions performed in a transaction
+     */
+    NLEmvStandardReference_TRANSACTION_STATUS_INFORMATION          = 0x9b,
+    /**
+     * Transaction Type.Indicates the type of financial transaction, represented by the first two digits of ISO 8583:1987 Processing Code
+     */
+    NLEmvStandardReference_TRANSACTION_TYPE                        = 0x9c,
+    /**
+     * Directory Definition File (DDF) Name.Identifies the name of a DF associated with a directory
+     */
+    NLEmvStandardReference_DDF_NAME                                = 0x9d,
+    /**
+     * File Control Information (FCI) Proprietary Template.Identifies the data object proprietary to this specification in the FCI template according to ISO/IEC 7816-4
+     */
+    NLEmvStandardReference_FCI_PROPRIETARY_TEMPLATE                = 0xa5,
+    /**
+     * Cardholder Name.Indicates cardholder name according to ISO 7813
+     */
+    NLEmvStandardReference_CARDHOLDER_NAME                         = 0x5f20 ,
+    /**
+     * Application Expiration Date.Date after which application expires
+     */
+    NLEmvStandardReference_APP_EXPIRATION_DATE                     = 0x5f24 ,
+    /**
+     * Application Effective Date.Date from which the application may be used
+     */
+    NLEmvStandardReference_APP_EFFECTIVE_DATE                      = 0x5f25 ,
+    /**
+     * Issuer Country Code.Indicates the country of the issuer according to ISO 3166
+     */
+    NLEmvStandardReference_ISSUER_COUNTRY_CODE                     = 0x5f28 ,
+    /**
+     * Transaction Currency Code.Indicates the currency code of the transaction according to ISO 4217
+     */
+    NLEmvStandardReference_TRANSACTION_CURRENCY_CODE               = 0x5f2a ,
+    /**
+     * Language Preference.1–4 languages stored in order of preference, each represented by 2 alphabetical characters according to ISO 639
+     */
+    NLEmvStandardReference_LANGUAGE_PREFERENCE                     = 0x5f2d ,
+    /**
+     * Service Code.Service code as defined in ISO/IEC 7813 for track 1 and track 2
+     */
+    NLEmvStandardReference_SERVICE_CODE                            = 0x5f30 ,
+    /**
+     * Application Primary Account Number (PAN) Sequence Number.Identifies and differentiates cards with the same PAN
+     */
+    //NLEmvStandardReference_PAN_SEQUENCE_NUMBER                     = 0x5f34 ,
+    /**
+     * Transaction Currency Exponent.Indicates the implied position of the decimal point from the right of the transaction amount represented according to ISO 4217
+     */
+    NLEmvStandardReference_TRANSACTION_CURRENCY_EXP                = 0x5f36 ,
+    /**
+     * Issuer URL.The URL provides the location of the Issuer’s Library Server on the Internet
+     */
+    NLEmvStandardReference_ISSUER_URL                              = 0x5f50 ,
+    /**
+     * International Bank Account Number (IBAN).Uniquely identifies the account of a customer at a financial institution as defined in ISO 13616
+     */
+    NLEmvStandardReference_IBAN                                    = 0x5f53 ,
+    /**
+     * Bank Identifier Code (BIC).Uniquely identifies a bank as defined in ISO 9362
+     */
+    NLEmvStandardReference_BANK_IDENTIFIER_CODE                    = 0x5f54 ,
+    /**
+     * Issuer Country Code (alpha2 format).Indicates the country of the issuer as defined in ISO 3166 (using a 2 character alphabetic code)
+     */
+    NLEmvStandardReference_ISSUER_COUNTRY_CODE_ALPHA2              = 0x5f55 ,
+    /**
+     * Issuer Country Code (alpha3 format).Indicates the country of the issuer as defined in ISO 3166 (using a 3 character alphabetic code)
+     */
+    NLEmvStandardReference_ISSUER_COUNTRY_CODE_ALPHA3              = 0x5f56 ,
+    /**
+     * Acquirer Identifier.Uniquely identifies the acquirer within each payment system
+     */
+    NLEmvStandardReference_ACQUIRER_IDENTIFIER                     = 0x9f01 ,
+    /**
+     * Amount, Authorised (Numeric).Authorised amount of the transaction (excluding adjustments)
+     */
+    NLEmvStandardReference_AMOUNT_AUTHORISED_NUMERIC               = 0x9f02 ,
+    /**
+     * Amount, Other (Numeric).Secondary amount associated with the transaction representing a cashback amount
+     */
+    NLEmvStandardReference_AMOUNT_OTHER_NUMERIC                    = 0x9f03 ,
+    /**
+     * Amount, Other (Binary).Secondary amount associated with the transaction representing a cashback amount
+     */
+    NLEmvStandardReference_AMOUNT_OTHER_BINARY                     = 0x9f04 ,
+    /**
+     * Application Discretionary Data.Issuer or payment system specified data relating to the application
+     */
+    NLEmvStandardReference_APP_DISCRETIONARY_DATA                  = 0x9f05 ,
+    /**
+     * Application Identifier (AID) - terminal.Identifies the application as described in ISO/IEC 7816-5
+     */
+    NLEmvStandardReference_AID_TERMINAL                            = 0x9f06 ,
+    /**
+     * Application Usage Control.Indicates issuer’s specified restrictions on the geographic usage and services allowed for the application
+     */
+    NLEmvStandardReference_APP_USAGE_CONTROL                       = 0x9f07 ,
+    /**
+     * Application Version Number - card.Version number assigned by the payment system for the application
+     */
+    NLEmvStandardReference_APP_VERSION_NUMBER_CARD                 = 0x9f08 ,
+    /**
+     * Application Version Number - terminal.Version number assigned by the payment system for the application
+     */
+    NLEmvStandardReference_APP_VERSION_NUMBER_TERMINAL             = 0x9f09 ,
+    /**
+     * Cardholder Name Extended.Indicates the whole cardholder name when greater than 26 characters using the same coding convention as in ISO 7813
+     */
+    NLEmvStandardReference_CARDHOLDER_NAME_EXTENDED                = 0x9f0b ,
+    /**
+     * Issuer Action Code - Default.Specifies the issuer’s conditions that cause a transaction to be rejected if it might have been approved online, but the terminal is unable to process the transaction online
+     */
+    NLEmvStandardReference_ISSUER_ACTION_CODE_DEFAULT              = 0x9f0d ,
+    /**
+     * Issuer Action Code - Denial.Specifies the issuer’s conditions that cause the denial of a transaction without attempt to go online
+     */
+    NLEmvStandardReference_ISSUER_ACTION_CODE_DENIAL               = 0x9f0e ,
+    /**
+     * Issuer Action Code - Online.Specifies the issuer’s conditions that cause a transaction to be transmitted online
+     */
+    NLEmvStandardReference_ISSUER_ACTION_CODE_ONLINE               = 0x9f0f ,
+    /**
+     * Issuer Application Data.Contains proprietary application data for transmission to the issuer in an online transaction
+     */
+    NLEmvStandardReference_ISSUER_APPLICATION_DATA                 = 0x9f10 ,
+    /**
+     * Issuer Code Table Index.Indicates the code table according to ISO/IEC 8859 for displaying the Application Preferred Name
+     */
+    NLEmvStandardReference_ISSUER_CODE_TABLE_INDEX                 = 0x9f11 ,
+    /**
+     * Application Preferred Name.Preferred mnemonic associated with the AID
+     */
+    NLEmvStandardReference_APP_PREFERRED_NAME                      = 0x9f12 ,
+    /**
+     * Last Online Application Transaction Counter (ATC) Register.ATC value of the last transaction that went online
+     */
+    NLEmvStandardReference_LAST_ONLINE_ATC_REGISTER                = 0x9f13 ,
+    /**
+     * Lower Consecutive Offline Limit.Issuer-specified preference for the maximum number of consecutive offline transactions for this ICC application allowed in a terminal with online capability
+     */
+    NLEmvStandardReference_LOWER_CONSEC_OFFLINE_LIMIT              = 0x9f14 ,
+    /**
+     * Merchant Category Code.Classifies the type of business being done by the merchant, represented according to ISO 8583:1993 for Card Acceptor Business Code
+     */
+    NLEmvStandardReference_MERCHANT_CATEGORY_CODE                  = 0x9f15 ,
+    /**
+     * Merchant Identifier.When concatenated with the Acquirer Identifier, uniquely identifies a given merchant
+     */
+    NLEmvStandardReference_MERCHANT_IDENTIFIER                     = 0x9f16 ,
+    /**
+     * Personal Identification Number (PIN) Try Counter.Number of PIN tries remaining
+     */
+    NLEmvStandardReference_PIN_TRY_COUNTER                         = 0x9f17 ,
+    /**
+     * Issuer Script Identifier.Identification of the Issuer Script
+     */
+    NLEmvStandardReference_ISSUER_SCRIPT_IDENTIFIER                = 0x9f18 ,
+    /**
+     * Terminal Country Code.Indicates the country of the terminal, represented according to ISO 3166
+     */
+    NLEmvStandardReference_TERMINAL_COUNTRY_CODE                   = 0x9f1a ,
+    /**
+     * Terminal Floor Limit.Indicates the floor limit in the terminal in conjunction with the AID
+     */
+    NLEmvStandardReference_TERMINAL_FLOOR_LIMIT                    = 0x9f1b ,
+    /**
+     * Terminal Identification.Designates the unique location of a terminal at a merchant
+     */
+    NLEmvStandardReference_TERMINAL_IDENTIFICATION                 = 0x9f1c ,
+    /**
+     * Terminal Risk Management Data.Application-specific value used by the card for risk management purposes
+     */
+    NLEmvStandardReference_TERMINAL_RISK_MANAGEMENT_DATA           = 0x9f1d ,
+    /**
+     * Interface Device (IFD) Serial Number.Unique and permanent serial number assigned to the IFD by the manufacturer
+     */
+    NLEmvStandardReference_INTERFACE_DEVICE_SERIAL_NUMBER          = 0x9f1e ,
+    
+    /**
+     * 卡序列号
+     * Application Primary account Number(PAN) Sequence Number
+     */
+    NLEmvStandardReference_CARD_SEQUENCE_NUMBER					= 0x5F34,
+    /**
+     * [Magnetic Stripe] Track 1 Discretionary Data.Discretionary part of track 1 according to ISO/IEC 7813
+     */
+    NLEmvStandardReference_TRACK1_DISCRETIONARY_DATA               = 0x9f1f ,
+    /**
+     * [Magnetic Stripe] Track 2 Discretionary Data.Discretionary part of track 2 according to ISO/IEC 7813
+     */
+    NLEmvStandardReference_TRACK2_DISCRETIONARY_DATA               = 0x9f20 ,
+    /**
+     * Transaction Time (HHMMSS).Local time that the transaction was authorised
+     */
+    NLEmvStandardReference_TRANSACTION_TIME                        = 0x9f21 ,
+    /**
+     * Certification Authority Public Key Index - Terminal.Identifies the certification authority’s public key in conjunction with the RID
+     */
+    NLEmvStandardReference_CA_PUBLIC_KEY_INDEX_TERMINAL            = 0x9f22 ,
+    /**
+     * Upper Consecutive Offline Limit.Issuer-specified preference for the maximum number of consecutive offline transactions for this ICC application allowed in a terminal without online capability
+     */
+    NLEmvStandardReference_UPPER_CONSEC_OFFLINE_LIMIT              = 0x9f23 ,
+    /**
+     * Application Cryptogram.Cryptogram returned by the ICC in response of the GENERATE AC command
+     */
+    NLEmvStandardReference_APP_CRYPTOGRAM                          = 0x9f26 ,
+    /**
+     * Cryptogram Information Data.Indicates the type of cryptogram and the actions to be performed by the terminal
+     */
+    NLEmvStandardReference_CRYPTOGRAM_INFORMATION_DATA             = 0x9f27 ,
+    /**
+     * ICC PIN Encipherment Public Key Certificate.ICC PIN Encipherment Public Key certified by the issuer
+     */
+    NLEmvStandardReference_ICC_PIN_ENCIPHERMENT_PUBLIC_KEY_CERT    = 0x9f2d ,
+    /**
+     * ICC PIN Encipherment Public Key Exponent.ICC PIN Encipherment Public Key Exponent used for PIN encipherment
+     */
+    NLEmvStandardReference_ICC_PIN_ENCIPHERMENT_PUBLIC_KEY_EXP     = 0x9f2e ,
+    /**
+     * ICC PIN Encipherment Public Key Remainder.Remaining digits of the ICC PIN Encipherment Public Key Modulus
+     */
+    NLEmvStandardReference_ICC_PIN_ENCIPHERMENT_PUBLIC_KEY_REM     = 0x9f2f ,
+    /**
+     * Issuer Public Key Exponent.Issuer public key exponent used for the verification of the Signed Static Application Data and the ICC Public Key Certificate
+     */
+    NLEmvStandardReference_ISSUER_PUBLIC_KEY_EXP                   = 0x9f32 ,
+    /**
+     * Terminal Capabilities.Indicates the card data input, CVM, and security capabilities of the terminal
+     */
+    NLEmvStandardReference_TERMINAL_CAPABILITIES                   = 0x9f33 ,
+    /**
+     * Cardholder Verification (CVM) Results.Indicates the results of the last CVM performed
+     */
+    NLEmvStandardReference_CVM_RESULTS                             = 0x9f34 ,
+    /**
+     * Terminal Type.Indicates the environment of the terminal, its communications capability, and its operational control
+     */
+    NLEmvStandardReference_TERMINAL_TYPE                           = 0x9f35 ,
+    /**
+     * Application Transaction Counter (ATC).Counter maintained by the application in the ICC (incrementing the ATC is managed by the ICC)
+     */
+    NLEmvStandardReference_APP_TRANSACTION_COUNTER                 = 0x9f36 ,
+    /**
+     * Unpredictable Number.Value to provide variability and uniqueness to the generation of a cryptogram
+     */
+    NLEmvStandardReference_UNPREDICTABLE_NUMBER                    = 0x9f37 ,
+    /**
+     * Processing Options Data Object List (PDOL).Contains a list of terminal resident data objects (tags and lengths) needed by the ICC in processing the GET PROCESSING OPTIONS command
+     */
+    NLEmvStandardReference_PDOL                                    = 0x9f38 ,
+    /**
+     * Point-of-Service (POS) Entry Mode.Indicates the method by which the PAN was entered, according to the first two digits of the ISO 8583:1987 POS Entry Mode
+     */
+    NLEmvStandardReference_POINT_OF_SERVICE_ENTRY_MODE             = 0x9f39 ,
+    /**
+     * Amount, Reference Currency.Authorised amount expressed in the reference currency
+     */
+    NLEmvStandardReference_AMOUNT_REFERENCE_CURRENCY               = 0x9f3a ,
+    /**
+     * Application Reference Currency.1–4 currency codes used between the terminal and the ICC when the Transaction Currency Code is different from the Application Currency Code, each code is 3 digits according to ISO 4217
+     */
+    NLEmvStandardReference_APP_REFERENCE_CURRENCY                  = 0x9f3b ,
+    /**
+     * Transaction Reference Currency Code.Code defining the common currency used by the terminal in case the Transaction Currency Code is different from the Application Currency Code
+     */
+    NLEmvStandardReference_TRANSACTION_REFERENCE_CURRENCY_CODE     = 0x9f3c ,
+    /**
+     * Transaction Reference Currency Exponent.Indicates the implied position of the decimal point from the right of the transaction amount, with the Transaction Reference Currency Code represented according to ISO 4217
+     */
+    NLEmvStandardReference_TRANSACTION_REFERENCE_CURRENCY_EXP      = 0x9f3d ,
+    /**
+     * Additional Terminal Capabilities.Indicates the data input and output capabilities of the terminal
+     */
+    NLEmvStandardReference_ADDITIONAL_TERMINAL_CAPABILITIES        = 0x9f40 ,
+    /**
+     * Transaction Sequence Counter.Counter maintained by the terminal that is incremented by one for each transaction
+     */
+    NLEmvStandardReference_TRANSACTION_SEQUENCE_COUNTER            = 0x9f41 ,
+    /**
+     * Application Currency Code.Indicates the currency in which the account is managed according to ISO 4217
+     */
+    NLEmvStandardReference_APPLICATION_CURRENCY_CODE               = 0x9f42 ,
+    /**
+     * Application Reference Currency Exponent.Indicates the implied position of the decimal point from the right of the amount, for each of the 1–4 reference currencies represented according to ISO 4217
+     */
+    NLEmvStandardReference_APP_REFERENCE_CURRECY_EXPONENT          = 0x9f43 ,
+    /**
+     * Application Currency Exponent.Indicates the implied position of the decimal point from the right of the amount represented according to ISO 4217
+     */
+    NLEmvStandardReference_APP_CURRENCY_EXPONENT                   = 0x9f44 ,
+    /**
+     * Data Authentication Code.An issuer assigned value that is retained by the terminal during the verification process of the Signed Static Application Data
+     */
+    NLEmvStandardReference_DATA_AUTHENTICATION_CODE                = 0x9f45 ,
+    /**
+     * ICC Public Key Certificate.ICC Public Key certified by the issuer
+     */
+    NLEmvStandardReference_ICC_PUBLIC_KEY_CERT                     = 0x9f46 ,
+    /**
+     * ICC Public Key Exponent.ICC Public Key Exponent used for the verification of the Signed Dynamic Application Data
+     */
+    NLEmvStandardReference_ICC_PUBLIC_KEY_EXP                      = 0x9f47 ,
+    /**
+     * ICC Public Key Remainder.Remaining digits of the ICC Public Key Modulus
+     */
+    NLEmvStandardReference_ICC_PUBLIC_KEY_REMAINDER                = 0x9f48 ,
+    /**
+     * Dynamic Data Authentication Data Object List (DDOL).List of data objects (tag and length) to be passed to the ICC in the INTERNAL AUTHENTICATE command
+     */
+    NLEmvStandardReference_DDOL                                    = 0x9f49 ,
+    /**
+     * Static Data Authentication Tag List.List of tags of primitive data objects defined in this specification whose value fields are to be included in the Signed Static or Dynamic Application Data
+     */
+    NLEmvStandardReference_SDA_TAG_LIST                            = 0x9f4a ,
+    /**
+     * Signed Dynamic Application Data.Digital signature on critical application parameters for DDA or CDA
+     */
+    NLEmvStandardReference_SIGNED_DYNAMIC_APPLICATION_DATA         = 0x9f4b ,
+    /**
+     * ICC Dynamic Number.Time-variant number generated by the ICC, to be captured by the terminal
+     */
+    NLEmvStandardReference_ICC_DYNAMIC_NUMBER                      = 0x9f4c ,
+    /**
+     * Log Entry.Provides the SFI of the Transaction Log file and its number of records
+     */
+    NLEmvStandardReference_LOG_ENTRY                               = 0x9f4d ,
+    /**
+     * Merchant Name and Location.Indicates the name and location of the merchant
+     */
+    NLEmvStandardReference_MERCHANT_NAME_AND_LOCATION              = 0x9f4e ,
+    /**
+     * Log Format.List (in tag and length format) of data objects representing the logged data elements that are passed to the terminal when a transaction log record is read
+     */
+    NLEmvStandardReference_LOG_FORMAT                              = 0x9f4f ,
+    
+    /**
+     * File Control Information (FCI) Issuer Discretionary Data.Issuer discretionary part of the FCI (e.g. O/S Manufacturer proprietary data)
+     */
+    NLEmvStandardReference_FCI_ISSUER_DISCRETIONARY_DATA           = 0xbf0c ,
+    
+    /**
+     * 卡产品标识信息
+     */
+    NLEmvStandardReference_CARD_PRODUCT_IDATIFICATION = 0x9f63,
+    
+    /**
+     * Terminal Transaction Qualifiers.Provided by the reader in the GPO command and used by the card to determine processing choices based on reader functionality
+     */
+    NLEmvStandardReference_TERMINAL_TRANSACTION_QUALIFIERS         = 0x9f66 ,
+    
+    /**
+     * Electronic cash issuer Authorization Code
+     * (by qpboc)
+     */
+    NLEmvStandardReference_EC_ISSUER_AUTHORIZATION_CODE = 0x9F74,
+    
+    /**
+     * PBOC联机余额
+     */
+    NLEmvStandardReference_PBOC_CARD_FUNDS = 0x9F79,
+    
+    /**
+     * QPBOC查询余额
+     */
+    NLEmvStandardReference_QPBOC_CARD_FUNDS = 0x9F5D,
+} NLEmvStandardReference;
+
+/*!
+ @enum
+ @abstract EMV 应用自定义标签扩展
+ @discussion
+ according to emv 4.2
+ */
+typedef enum {
+    /****CA 参数设置****/
+    /**
+     * 认证中心公钥有效期
+     */
+    NLEmvSelfDefinedReference_CA_PK_EXPIRATION_DATE = 0xDF05,
+    
+    /**
+     * 公钥的签名hash算法
+     */
+    NLEmvSelfDefinedReference_CA_PK_HASH_ALGORITHM_INDICATOR = 0xDF06,
+    
+    /**
+     * 公钥的签名算法
+     */
+    NLEmvSelfDefinedReference_CA_PK_ALGORITHM_INDICATOR = 0xDF07,
+    
+    /**
+     * 公钥的n模
+     */
+    NLEmvSelfDefinedReference_CAPK_MODULUS = 0xDF02,
+    
+    /**
+     * 公钥的e指数
+     */
+    NLEmvSelfDefinedReference_CAPK_EXPONENT = 0xDF04,
+    
+    /**
+     * 公钥指纹
+     */
+    NLEmvSelfDefinedReference_CAPK_SHA1CHECKSUM = 0xDF03,
+    
+    
+    
+    /****AID设置****/
+    /**
+     * 应用选择指示符(ASI)
+     */
+    NLEmvSelfDefinedReference_APP_SELECT_INDICATOR = 0xDF01,
+    
+    /**
+     * TAC缺省
+     */
+    NLEmvSelfDefinedReference_TAC_DEFAULT = 0xDF11,
+    /**
+     * TAC联机
+     */
+    NLEmvSelfDefinedReference_TAC_ONLINE = 0xDF12,
+    /**
+     * TAC拒绝
+     */
+    NLEmvSelfDefinedReference_TAC_DENIAL = 0xDF13,
+    /**
+     * 偏置随机选择的阈值
+     */
+    NLEmvSelfDefinedReference_THRESHOLD_VALUE_FOR_BIASED_RANDOM_SELECTION = 0xDF15,
+    /**
+     * 偏置随机选择的最大目标百分数
+     */
+    NLEmvSelfDefinedReference_MAX_TARGET_PERCENTAGE_FOR_BIASED_RANDOM_SELECTION = 0xDF16,
+    /**
+     * 随机选择的目标百分数
+     */
+    NLEmvSelfDefinedReference_TARGET_PERCENTAGE_FOR_RANDOM_SELECTION = 0xDF17,
+    /**
+     * 缺省的DDOL
+     */
+    NLEmvSelfDefinedReference_DEFAULT_DDOL = 0xDF14,
+    /**
+     * 终端联机PIN支持能力
+     */
+    NLEmvSelfDefinedReference_ONLINEPIN_CAPABILITY = 0xDF18,
+    
+    /**
+     * 电子现金交易限额
+     */
+    NLEmvSelfDefinedReference_EC_TRANS_LIMIT = 0x9F7B,
+    
+    /**
+     * 非接卡脱机最低限额
+     */
+    NLEmvSelfDefinedReference_NCICC_OFFLINE_FLOOR_LIMIT = 0xDF19,
+    
+    /**
+     * 非接卡交易限额
+     */
+    NLEmvSelfDefinedReference_NCICC_TRANS_LIMIT = 0xDF20,
+    
+    /**
+     * 非接交易触发CVM交易限额
+     */
+    NLEmvSelfDefinedReference_NCICC_CVM_LIMIT = 0xDF21,
+    
+    /**
+     * 是否支持电子现金
+     */
+    NLEmvSelfDefinedReference_EC_CAPABILITY = 0xDF24,
+    
+    /**
+     * 核心配置能力
+     */
+    NLEmvSelfDefinedReference_CORE_CONFIG_TYPE = 0xDF25,
+    
+    /****pboc设置终端属性****/
+    
+    /**
+     * 终端ICS设置
+     * TODO
+     */
+    NLEmvSelfDefinedReference_TRMNL_ICS_CONFIG = 0xDF7A,
+    
+    /**
+     * 默认的交易证书数据对象列表(TDOL)
+     */
+    NLEmvSelfDefinedReference_DEFAULT_TDOL = 0xDF45,
+    
+    /**
+     * 是否支持部分AID匹配
+     */
+    NLEmvSelfDefinedReference_AID_PARTLY_MATCH_SUPPORTED = 0xDF01,
+    
+    /**
+     * fallback posentry
+     */
+    NLEmvSelfDefinedReference_FALLBACK_POSENTRY = 0xDF40,
+    
+    
+    
+    /****相关交易数据获取****/
+    /**
+     * pboc交易处理结果
+     */
+    NLEmvSelfDefinedReference_PBOC_PROCESS_RSLT = 0xDF75,
+    
+    /****pboc标准流程参数****/
+    
+    /**
+     * 当前卡片介质
+     */
+    NLEmvSelfDefinedReference_MEDIATYPE = 0xDF70,
+    /**
+     * pboc交易步骤
+     */
+    NLEmvSelfDefinedReference_PBOC_TRANS_STEP = 0xDF71,
+    
+    /**
+     * pboc强制联机标志
+     */
+    NLEmvSelfDefinedReference_FORCE_ONLINE = 0xDF72,
+    
+    /**
+     * pboc账户选择标志
+     */
+    NLEmvSelfDefinedReference_ACCTSELECTED_INDICATOR = 0xDF73,
+    
+    /**
+     * 联机密码参数
+     */
+    NLEmvSelfDefinedReference_ONLINEPIN_PARAMS = 0xDF74,
+    
+    /**
+     * 需要响应的标签对象列表
+     */
+    NLEmvSelfDefinedReference_TAGS_REQUIRED = 0xDF35,
+    
+    
+    
+    /****pboc交易过程数据读取扩展****/
+    /**
+     * 在线pin输入标志
+     */
+    NLEmvSelfDefinedReference_ONLINE_PIN = 0xDF36,//0xDF51
+    
+    /**
+     * 芯片序列号
+     */
+    NLEmvSelfDefinedReference_CHIP_SERIAL_NO = 0xDF32,
+    
+    /**
+     * 过程密钥数据
+     */
+    NLEmvSelfDefinedReference_SESSION_KEY_DATA = 0xDF33,
+    
+    /**
+     * 终端读取数据的时间
+     */
+    NLEmvSelfDefinedReference_TERMINAL_READING_TIME = 0xDF34,
+    /**
+     * KSN
+     */
+    NLEmvSelfDefinedReference_KSN = 0xDF79,
+    
+    /****二次授权相关****/
+    /**
+     * 脚本执行结果
+     */
+    NLEmvSelfDefinedReference_SCRIPT_EXECUTE_RSLT = 0xDF31,
+    
+    /**
+     * 内部交易类型 
+     */
+    NLEmvSelfDefinedReference_INNER_TRANSACTION_TYPE = 0xDF7C,
+    
+    /**
+     * 错误码
+     */
+    NLEmvSelfDefinedReference_ERROR_CODE = 0xDF76,
+} NLEmvSelfDefinedReference;
+
+#endif

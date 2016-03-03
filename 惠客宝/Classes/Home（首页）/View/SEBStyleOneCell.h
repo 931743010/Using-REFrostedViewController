@@ -1,0 +1,28 @@
+//
+//  SEBStyleOneCell.h
+//  商E宝
+//
+//  Created by 薛银亮 on 16/2/2.
+//  Copyright © 2016年 Neighbours. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+@protocol  SEBStyleOneCellDelegate;
+
+@interface SEBStyleOneCell : UITableViewCell
+
++ (instancetype)cellWithTableView:(UITableView *)tableView dataArray:(NSArray *)dataArray;
+
+@property(weak, nonatomic)id<SEBStyleOneCellDelegate> delegate;
+@property (nonatomic , strong) NSIndexPath *indexpath;
+
+@end
+
+
+@protocol  SEBStyleOneCellDelegate <NSObject>
+@optional
+//产品被点击
+-(void)commendProductClick:(long)sender;
+//更多被点击
+-(void)didMoreButtonClick:(UIButton *)button indexPath:(NSIndexPath *)indexpath;
+@end
